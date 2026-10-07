@@ -1,0 +1,5 @@
+# DSH's Web Agent presets already load dsh-compaction-basic in their isolated
+# Agent contexts. This bundle adds only the Host/client settings surface.
+- insert:
+    - id: auto-compact-settings
+      name: '@ohmejj/dsh-auto-compact'

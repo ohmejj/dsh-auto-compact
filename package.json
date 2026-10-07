@@ -1,0 +1,84 @@
+{
+  "name": "@ohmejj/dsh-auto-compact",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness plugin that configures native automatic context compaction from Settings.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "default": "./dist/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig.client.json",
+    "check": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.client.json --noEmit",
+    "test": "npm run build && node --test \"tests/*.test.mjs\"",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "compaction",
+    "context-window",
+    "plugin"
+  ],
+  "license": "MIT",
+  "author": "ohmejj",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ohmejj/dsh-auto-compact.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.2",
+    "@deepseek-ai/cordis-plugin-include": "~1.0.9",
+    "@deepseek-ai/dsh-app-boot": "^0.2.0-rc.2",
+    "@deepseek-ai/dsh-atomic-write": "^0.2.0-rc.2",
+    "@deepseek-ai/dsh-compaction": "^0.2.0-rc.2",
+    "@deepseek-ai/dsh-compaction-basic": "^0.2.0-rc.2",
+    "@deepseek-ai/dsh-agent-preset-registry": "^0.2.0-rc.2",
+    "js-yaml": "^4.3.2",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@deepseek-ai/dsh-app-boot": "^0.2.0-rc.2",
+    "@deepseek-ai/cordis-plugin-include": "~1.0.9",
+    "@deepseek-ai/dsh-atomic-write": "^0.2.0-rc.2",
+    "@deepseek-ai/dsh-compaction": "^0.2.0-rc.2",
+    "@deepseek-ai/dsh-compaction-basic": "^0.2.0-rc.2",
+    "@deepseek-ai/dsh-agent-preset-registry": "^0.2.0-rc.2",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.10.5",
+    "js-yaml": "^4.3.2",
+    "typescript": "^5.7.3",
+    "yaml": "^2.9.1"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-settings"
+      ]
+    }
+  }
+}
